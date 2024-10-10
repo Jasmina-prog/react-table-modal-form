@@ -1,6 +1,6 @@
 import { Space, Table, Tag } from "antd"
-import { Controller } from "react-hook-form";
-import { useQuery } from "@tanstack/react-query";
+import { Controller, useForm } from "react-hook-form";
+// import { useQuery } from "@tanstack/react-query";
 const columns = [
     {
         title: 'Users',
@@ -37,26 +37,29 @@ const columns = [
 ]
 const data = [
     {
+        key:1,
         userid:'userId1',
         title:'something1',
         tags:['done'],
     },
     {
+        key:2,
         userid:'userId2',
         title:'something2',
         tags:['done'],
     },
     {
+        key:3,
         userid:'userId3',
         title:'something3',
         tags:['done'],
     },
   ];
 function TablePage(){
-    const {control} = useQuery();
+    const {control, handleSubmit} = useForm();
     return(
     <>
-    
+    <h1>hi</h1>
         <Controller
         name="table"
          control={control}
