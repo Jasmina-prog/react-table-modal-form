@@ -1,39 +1,7 @@
 import { Space, Table, Tag } from "antd"
 import { Controller, useForm } from "react-hook-form";
 // import { useQuery } from "@tanstack/react-query";
-const columns = [
-    {
-        title: 'Users',
-        dataIndex: 'userid',
-        key: 'userid',
-    },
-    {
-        title: 'Title',
-        dataIndex: 'title',
-        key: 'title'
-    },
-    // {
-    //     title: 'Tags',
-    //     key: 'tags',
-    //     dataIndex: 'tags',
-    //     render: (_, { tags }) => (
-    //         <>
-    //           {tags.map((tag) => {
-    //             let color = tag.length > 5 ? 'geekblue' : 'green';
-    //             if (tag === 'loser') {
-    //               color = 'volcano';
-    //             }
-    //             return (
-    //               <Tag color={color} key={tag}>
-    //                 {tag.toUpperCase()}
-    //               </Tag>
-    //             );
-    //           })}
-    //         </>
-    //       ),
-    // }
-    
-]
+
 const data = [
     {
         key:1,
@@ -45,7 +13,7 @@ const data = [
         key:2,
         userid:'userId2',
         title:'something2',
-        tags:['done'],
+        tags:['uncompleted', 'in proccess'],
     },
     {
         key:3,
@@ -54,18 +22,46 @@ const data = [
         tags:['done'],
     },
   ];
+
+const columns = [
+    {
+        title: 'Users',
+        dataIndex: 'userid',
+        key: 'userid',
+    },
+    {
+        title: 'Title',
+        dataIndex: 'title',
+        key: 'title'
+    },
+    {
+        title: 'Tags',
+        key: 'tags',
+        dataIndex: 'tags',
+        render: (_, { tags }) => (
+            <>
+              {tags.map((tag) => {
+                let color = tag.length > 5 ? 'geekblue' : 'green';
+                if (tag === 'uncompleted') {
+                  color = 'volcano';
+                }
+                return (
+                  <Tag color={color} key={tag}>
+                    {tag.toUpperCase()}
+                  </Tag>
+                );
+              })}
+            </>
+          ),
+    }
+    
+]
+
 function TablePage(){
     const {control, handleSubmit} = useForm();
     return(
     <>
-    <h1>hi</h1>
-        <Controller
-        name="table"
-         control={control}
-         render={({field}) =>{
-             <Table columns={columns} dataSource={data} {...field}/>
-         }}
-        />
+    <Table columns={columns} dataSource={data}/>
     </>
     )
 }
