@@ -6,33 +6,32 @@ const columns = [
         title: 'Users',
         dataIndex: 'userid',
         key: 'userid',
-        render: (text) => <a>{text}</a>,
     },
     {
         title: 'Title',
         dataIndex: 'title',
         key: 'title'
     },
-    {
-        title: 'Tags',
-        key: 'tags',
-        dataIndex: 'tags',
-        render: (_, { tags }) => (
-            <>
-              {tags.map((tag) => {
-                let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'loser') {
-                  color = 'volcano';
-                }
-                return (
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                  </Tag>
-                );
-              })}
-            </>
-          ),
-    }
+    // {
+    //     title: 'Tags',
+    //     key: 'tags',
+    //     dataIndex: 'tags',
+    //     render: (_, { tags }) => (
+    //         <>
+    //           {tags.map((tag) => {
+    //             let color = tag.length > 5 ? 'geekblue' : 'green';
+    //             if (tag === 'loser') {
+    //               color = 'volcano';
+    //             }
+    //             return (
+    //               <Tag color={color} key={tag}>
+    //                 {tag.toUpperCase()}
+    //               </Tag>
+    //             );
+    //           })}
+    //         </>
+    //       ),
+    // }
     
 ]
 const data = [
